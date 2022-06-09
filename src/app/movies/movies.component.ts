@@ -70,7 +70,7 @@ export class MoviesComponent implements OnInit {
     if (term === '') {
       return of([]);
     }
-    return this.httpClient.get('http://www.omdbapi.com/?s=' + term + '&apikey=' + APIKEY, { params: PARAMS.set('search', term) });
+    return this.httpClient.get('https://www.omdbapi.com/?s=' + term + '&apikey=' + APIKEY, { params: PARAMS.set('search', term) });
   }
 
 }
