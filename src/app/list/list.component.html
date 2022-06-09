@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header bg-danger text-white">Infinite Scroll for the List Array</div>
+    <div class="card-body">
+      <div class="myPage"  infinite-scroll 
+      (scrolled)="onScrollDown()" [scrollWindow]="false"
+      (scrolledUp)="onScrollUp()">
+        <ul class="list-group">
+          <li *ngFor="let list of listArray" class="list-group-item"> {{list}}</li>
+        </ul>
+      </div>
+    </div> 
+    <div class="card-footer bg-dark text-white">Footer</div>
+  </div>
