@@ -21,7 +21,7 @@
               </div>
               <div class="row">
           
-                <ng-container *ngIf="apiResponse['Response'] == 'False'; else elseTemplate">
+                <ng-container *ngIf="apiResponse && apiResponse['Response'] == 'False'; else elseTemplate">
           
                   <div class="col-12 text-center">
                     <div class="alert alert-danger" role="alert">
