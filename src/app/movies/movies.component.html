@@ -33,19 +33,18 @@
                 </ng-container>
           
                 <ng-template #elseTemplate>
+                    <div *ngIf="apiResponse">
+                        <div class="col-3" *ngFor="let movie of apiResponse['Search']">
           
-          
-                  <div class="col-3" *ngFor="let movie of apiResponse['Search']">
-          
-                    <div class="card" style="margin:5px;">
-                      <img class="card-img-top" src="{{movie['Poster']}}">
-                      <div class="card-body">
-                        <h5 class="card-title">{{movie['Title']}}</h5>
-                        <p class="card-text">Year: {{movie['Year']}}</p>
-                      </div>
+                            <div class="card" style="margin:5px;">
+                              <img class="card-img-top" src="{{movie['Poster']}}">
+                              <div class="card-body">
+                                <h5 class="card-title">{{movie['Title']}}</h5>
+                                <p class="card-text">Year: {{movie['Year']}}</p>
+                              </div>
+                            </div>
+                          </div>
                     </div>
-                  </div>
-          
                 </ng-template>
           
               </div>
