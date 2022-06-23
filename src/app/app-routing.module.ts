@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
+import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
 
 const routes: Routes = [
@@ -13,8 +14,12 @@ const routes: Routes = [
     component: MoviesComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '**',
-    redirectTo:'movies'
+    redirectTo:'login'
   }
 ];
 
