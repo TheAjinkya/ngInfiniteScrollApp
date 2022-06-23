@@ -1,5 +1,6 @@
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  public user: SocialUser = new SocialUser;
-   	constructor(private authService: SocialAuthService) {}
-ngOnInit() {
-      this.authService.authState.subscribe(user => {
-      this.user = user;
-      console.log(user);
+  loginForm: FormGroup | undefined;
+  socialUser!: SocialUser;
+  isLoggedin: boolean = false;  
+  
+  constructor(
+    private formBuilder: FormBuilder, 
+    private socialAuthService: SocialAuthService
+  ) { }
+
+  ngOnInit() {
+    // init the react form object
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });    
+    
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = (user != null);
+      console.log(this.socialUser);
     });
   }
-  public signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+  // Initial implicite flow using OAuth2 protocol
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
-  public signOut(): void {
-    this.authService.signOut();
+
+  // Logout the current session
+  logOut(): void {
+    this.socialAuthService.signOut();
   }
 }

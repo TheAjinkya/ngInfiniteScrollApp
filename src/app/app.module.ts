@@ -26,7 +26,9 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     InfiniteScrollModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
   providers: [ {
     provide: 'SocialAuthServiceConfig',
@@ -36,7 +38,7 @@ import { LoginComponent } from './login/login.component';
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            'Your-Google-Client-ID-Here'
+            '501064613644-8vq8jbjqc7sqb4cio567cg5tvll64ihk.apps.googleusercontent.com'
           )
         }
       ]
